@@ -54,7 +54,7 @@ public class Story {
         friendsVintik.setLocation(forest);
         fatCop.addFeeling(Feelings.RESENTMENT);
         try {
-            fatCop.kick(fatCop);
+            fatCop.kick(vintik);
         } catch (NotNameException e) {
             System.out.println(e.getMessage());
         }
