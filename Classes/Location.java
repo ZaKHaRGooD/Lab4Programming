@@ -7,6 +7,20 @@ public class Location {
     public Location(String nameLocation, String namePlace){
         this.nameLocation = nameLocation;
         this.namePlace = namePlace;
+        validateNameLocation(nameLocation, namePlace);
+    }
+
+    // локальный класс в методе
+    private void validateNameLocation(String nameLocation, String namePlace) {
+        class NameLocation {
+            public void CheckName() {
+                if ((nameLocation == null) || (namePlace == null)) {
+                    System.out.println("Имя локации и места не могут быть null");
+                }
+            }
+        }
+        NameLocation nameLocation1 = new NameLocation();
+        nameLocation1.CheckName();
     }
 
     public void changeLocation(String newLocation){

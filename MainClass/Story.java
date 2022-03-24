@@ -45,7 +45,9 @@ public class Story {
 
 
     public static void main(String[] args) {
+        Location nullLocation = new Location(null, null);
         Story story = new Story();
+        story.addLocation(nullLocation);
         Location forest = new Location("поляна", "лес");
         story.addLocation(forest);
         Hero fatCop = new Hero("полицейский", 90);

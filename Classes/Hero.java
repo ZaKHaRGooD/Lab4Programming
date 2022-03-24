@@ -7,6 +7,7 @@ public class Hero extends Human {
         super(name, weight);
     }
 
+    // вложенный нестатитчный класс
     public class Body {
         public void addNameWeight(Hero hero) {
             if (weight >= 80) {
