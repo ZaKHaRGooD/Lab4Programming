@@ -10,7 +10,7 @@ public class Story {
     ArrayList<Transport> transports = new ArrayList<>();
     ArrayList<Location> locations = new ArrayList<>();
 
-    // анонимный класс
+    // anonymous inner class
     JoinToStory joinToStory = new JoinToStory() {
         @Override
         public void joinToStory(Hero hero) {
@@ -28,39 +28,24 @@ public class Story {
         }
     };
 
-    public void addHero(Hero hero) {
-        heroes.add(hero);
-        joinToStory.joinToStory(hero);
-    }
-
-    public void addTransport(Transport transport) {
-        transports.add(transport);
-        joinToStory.joinToStory(transport);
-    }
-
-    public void addLocation(Location location) {
-        locations.add(location);
-        joinToStory.joinToStory(location);
-    }
-
-
     public static void main(String[] args) {
-        Location nullLocation = new Location(null, null);
         Story story = new Story();
-        story.addLocation(nullLocation);
+        StoryStarter storyStarter = new StoryStarter();
+        storyStarter.storyStart();
+
         Location forest = new Location("поляна", "лес");
         story.addLocation(forest);
         Hero fatCop = new Hero("полицейский", 90);
         Hero.Body fatCopBody = fatCop.new Body();
-        fatCopBody.addNameWeight(fatCop);
+        fatCopBody.addNameWeight();
         story.addHero(fatCop);
         Hero vintik = new Hero("Винтик", 70);
         Hero.Body vintikBody = vintik.new Body();
-        vintikBody.addNameWeight(vintik);
+        vintikBody.addNameWeight();
         story.addHero(vintik);
         Hero friendsVintik = new Hero("друзья Винтика", 70);
         Hero.Body friendsVintikBody = friendsVintik.new Body();
-        friendsVintikBody.addNameWeight(friendsVintik);
+        friendsVintikBody.addNameWeight();
         story.addHero(friendsVintik);
 
         fatCop.setLocation(forest);
@@ -91,11 +76,42 @@ public class Story {
         story.addLocation(houseVillage);
         Hero countryPeople = new Hero("жители Нееловки", 70);
         Hero.Body countryPeopleBody = countryPeople.new Body();
-        countryPeopleBody.addNameWeight(countryPeople);
+        countryPeopleBody.addNameWeight();
         story.addHero(countryPeople);
         countryPeople.setLocation(houseVillage);
         countryPeople.runOutOfHouse(car);
         countryPeople.addFeeling(Feelings.FEAR);
         countryPeople.doMove(car);
+        StoryEnder storyEnder = new StoryEnder();
+        storyEnder.storyEnd();
+    }
+
+    public void addHero(Hero hero) {
+        heroes.add(hero);
+        joinToStory.joinToStory(hero);
+    }
+
+    public void addTransport(Transport transport) {
+        transports.add(transport);
+        joinToStory.joinToStory(transport);
+    }
+
+    public void addLocation(Location location) {
+        locations.add(location);
+        joinToStory.joinToStory(location);
+    }
+
+    // static nested class
+    private static class StoryStarter {
+        public void storyStart() {
+            System.out.println("Начинается история");
+        }
+    }
+
+    // static nested class
+    private static class StoryEnder {
+        public void storyEnd() {
+            System.out.println("История закончилась");
+        }
     }
 }

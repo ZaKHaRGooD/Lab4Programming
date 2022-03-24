@@ -7,21 +7,6 @@ public class Hero extends Human {
         super(name, weight);
     }
 
-    // вложенный нестатитчный класс
-    public class Body {
-        public void addNameWeight(Hero hero) {
-            if (weight >= 80) {
-                nameWeight = "Толстый ";
-            }
-            if ((weight < 80) && (weight >= 60)) {
-                nameWeight = "";
-            }
-            if (weight < 60 ) {
-                nameWeight = "Худой ";
-            }
-        }
-    }
-
     public void kick(Hero hero) {
         for (Feelings feeling : feelings) {
             if (feeling == Feelings.RESENTMENT) {
@@ -38,7 +23,6 @@ public class Hero extends Human {
         changeCity("внутри " + transport.getName(), transport.getNamePlace());
         System.out.println("Герой " + this.nameWeight + this.getName() + " едет на траспорте " + transport.getName());
     }
-
 
     public void runOutOfHouse(Transport transport) {
         if ((location.compareLocation(this, transport)) && (transport.isNoisy)) {
@@ -142,6 +126,21 @@ public class Hero extends Human {
     @Override
     public String toString() {
         return "Герой(и) " + this.nameWeight + this.getName() + " присоединился к истории";
+    }
+
+    // non-static nested class (inner class)
+    public class Body {
+        public void addNameWeight() {
+            if (weight >= 80) {
+                nameWeight = "Толстый ";
+            }
+            if ((weight < 80) && (weight >= 60)) {
+                nameWeight = "";
+            }
+            if (weight < 60) {
+                nameWeight = "Худой ";
+            }
+        }
     }
 }
 

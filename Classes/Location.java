@@ -4,13 +4,13 @@ public class Location {
     private String nameLocation;
     private String namePlace;
 
-    public Location(String nameLocation, String namePlace){
+    public Location(String nameLocation, String namePlace) {
         this.nameLocation = nameLocation;
         this.namePlace = namePlace;
         validateNameLocation(nameLocation, namePlace);
     }
 
-    // локальный класс в методе
+    // method-local inner class
     private void validateNameLocation(String nameLocation, String namePlace) {
         class NameLocation {
             public void CheckName() {
@@ -23,11 +23,11 @@ public class Location {
         nameLocation1.CheckName();
     }
 
-    public void changeLocation(String newLocation){
+    public void changeLocation(String newLocation) {
         nameLocation = newLocation;
     }
 
-    public void changeCity(String newLocation, String newPlace){
+    public void changeCity(String newLocation, String newPlace) {
         nameLocation = newLocation;
         namePlace = newPlace;
     }

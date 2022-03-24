@@ -1,4 +1,5 @@
 package Classes;
+
 import Util.HaveLocation;
 import Util.ThingInterface;
 
@@ -6,17 +7,6 @@ public class Transport implements HaveLocation, ThingInterface {
     private final String name;
     protected Location location;
     protected boolean isNoisy;
-
-    // вложенный нестатитчный класс
-    public class partOfTransport {
-        String name;
-        boolean isNoisy;
-
-        partOfTransport(String name, boolean isNoisy) {
-            this.name = name;
-            this.isNoisy = isNoisy;
-        }
-    }
 
     public Transport(String name, boolean isNoisy) {
         this.name = name;
@@ -28,7 +18,6 @@ public class Transport implements HaveLocation, ThingInterface {
         location.changeLocation(newLocation);
         System.out.println("Транспорт " + this.getName() + " поменял свою локацию на " + location.getNameLocation() + " в месте " + location.getNamePlace());
     }
-
 
     public String getNamePlace() {
         return location.getNamePlace();
@@ -73,5 +62,16 @@ public class Transport implements HaveLocation, ThingInterface {
     @Override
     public String toString() {
         return "Транспорт " + name;
+    }
+
+    // вложенный нестатитчный класс
+    public class partOfTransport {
+        String name;
+        boolean isNoisy;
+
+        partOfTransport(String name, boolean isNoisy) {
+            this.name = name;
+            this.isNoisy = isNoisy;
+        }
     }
 }
