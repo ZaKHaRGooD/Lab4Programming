@@ -2,6 +2,7 @@ package MainClass;
 
 import Classes.*;
 import Util.JoinToStory;
+import Exception.NotNameException;
 
 import java.util.ArrayList;
 
@@ -52,7 +53,11 @@ public class Story {
         vintik.setLocation(forest);
         friendsVintik.setLocation(forest);
         fatCop.addFeeling(Feelings.RESENTMENT);
-        fatCop.kick(vintik);
+        try {
+            fatCop.kick(fatCop);
+        } catch (NotNameException e) {
+            System.out.println(e.getMessage());
+        }
 
         fatCop.setLocation(forest);
         Transport car = new Transport("машина", true);
@@ -60,6 +65,13 @@ public class Story {
         car.setLocation(forest);
         vintik.goByTransport(car);
         friendsVintik.goByTransport(car);
+
+        try {
+            Thread.sleep(1000);
+            System.out.print("Некоторое время спустя\n");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         Location exitForest = new Location("выезд", "выезд с леса");
         story.addLocation(exitForest);

@@ -8,7 +8,9 @@ public class Transport implements HaveLocation, ThingInterface {
     protected Location location;
     protected boolean isNoisy;
 
-    public Transport(String name, boolean isNoisy) {
+    public Transport(String name, boolean isNoisy) throws NullPointerException {
+        NullPointerException exception = new NullPointerException();
+        if (name == null) throw exception;
         this.name = name;
         this.isNoisy = isNoisy;
     }

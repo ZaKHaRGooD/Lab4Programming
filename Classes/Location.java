@@ -4,7 +4,9 @@ public class Location {
     private String nameLocation;
     private String namePlace;
 
-    public Location(String nameLocation, String namePlace) {
+    public Location(String nameLocation, String namePlace) throws NullPointerException {
+        NullPointerException exception = new NullPointerException();
+        if (nameLocation == null || namePlace == null) throw exception;
         this.nameLocation = nameLocation;
         this.namePlace = namePlace;
         validateNameLocation(nameLocation, namePlace);

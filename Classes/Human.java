@@ -1,6 +1,7 @@
 package Classes;
 
 import Util.HaveLocation;
+import Exception.NegativeWeightException;
 
 public abstract class Human implements HaveLocation {
     final protected int weight;
@@ -9,7 +10,10 @@ public abstract class Human implements HaveLocation {
     protected Location location;
     protected String nameWeight;
 
-    public Human(String name, int weight) {
+    public Human(String name, int weight) throws NullPointerException {
+        NullPointerException exception = new NullPointerException();
+        if (name == null) throw exception;
+        if (weight <= 0) throw new NegativeWeightException("Масса героя не может быть отрицательной");
         this.name = name;
         this.weight = weight;
     }

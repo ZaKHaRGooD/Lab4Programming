@@ -1,21 +1,27 @@
 package Classes;
 
+import Exception.NotNameException;
+
 public class Hero extends Human {
     protected boolean isRunOutOfHouse;
 
-    public Hero(String name, int weight) {
+    public Hero(String name, int weight) throws NullPointerException {
         super(name, weight);
     }
 
-    public void kick(Hero hero) {
-        for (Feelings feeling : feelings) {
-            if (feeling == Feelings.RESENTMENT) {
-                System.out.println("Герой " + this.nameWeight + this.getName() + " не смог уйти от расплаты, поэтому пнул Героя " + this.nameWeight + hero.getName());
-                delFeeling(Feelings.RESENTMENT);
-            } else {
-                System.out.println("Герой " + this.nameWeight + this.getName() + " смог уйти от расплаты, поэтому Герой " + this.nameWeight + hero.getName() + " остался без пинка");
+    public void kick(Hero hero) throws NotNameException {
+        if (this.equals(hero)) {
+            throw new NotNameException("Герой не может сам себя пнуть");
+        } else {
+            for (Feelings feeling : feelings) {
+                if (feeling == Feelings.RESENTMENT) {
+                    System.out.println("Герой " + this.nameWeight + this.getName() + " не смог уйти от расплаты, поэтому пнул Героя " + this.nameWeight + hero.getName());
+                    delFeeling(Feelings.RESENTMENT);
+                } else {
+                    System.out.println("Герой " + this.nameWeight + this.getName() + " смог уйти от расплаты, поэтому Герой " + this.nameWeight + hero.getName() + " остался без пинка");
+                }
+                break;
             }
-            break;
         }
     }
 
