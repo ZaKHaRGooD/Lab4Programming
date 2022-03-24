@@ -21,18 +21,6 @@ public class Hero extends Human {
         }
     }
 
-//    {
-//        if (weight >= 80) {
-//            nameWeight = "Толстый ";
-//        }
-//        if ((weight < 80) && (weight >= 60)) {
-//            nameWeight = "";
-//        }
-//        if (weight < 60 ) {
-//            nameWeight = "Худой ";
-//        }
-//    }
-
     public void kick(Hero hero) {
         for (Feelings feeling : feelings) {
             if (feeling == Feelings.RESENTMENT) {
